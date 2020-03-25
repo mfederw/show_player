@@ -12,7 +12,7 @@ import RPi.GPIO as GPIO
 import ST7789 as ST7789
 
 image_file = "./Screen.png"
-music_dir = "./Music/"
+music_dir = "/home/pi/Music/"
 
 class Display:
     def __init__(self):
