@@ -88,16 +88,27 @@ class Player:
             #print("Fade out")
             pygame.mixer.music.fadeout(3000)
 
-category = os.listdir(music_dir)
+try:
+    category = os.listdir(music_dir)
+except:
+    raise Exception("Music Directory Not Found: " + music_dir)
+    
 #print("Categories: ", category)
 c = 0
 songs = []
+
+if len(category) == 0:
+    print("No subdirectories in Music Directory: " + music_dir)
+    sys.exit(1)
 
 for dir in category:
     files = os.listdir(music_dir + category[c])
     #print("category: ", c, " ", files, "\n")
     songs.append([])
-    #songs[c].append(files)
+    if len(files) == 0:
+        print("Directory: " + music_dir + dir + " should have at least one mp3 file")
+        sys.exit(1)
+
     songs[c] = files
     c = c + 1
 
